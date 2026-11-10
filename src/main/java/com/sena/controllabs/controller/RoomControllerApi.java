@@ -20,10 +20,10 @@ public interface RoomControllerApi {
 
     // 1. GET Listar Aulas con Query Param opcional (?block=A) -> URL Final: /api/v1/rooms?block=A
     //http://localhost:8080/api/v1/rooms
-    //http://localhost:8080/api/v1/rooms/?block=FONTIBON
+    //http://localhost:8080/api/v1/rooms?block=FONTIBON
     @GetMapping
     ResponseEntity<List<RoomResponse>> getAllRooms(
-            @RequestParam(required = false) String block
+        @RequestParam(required = false) String block
     );
 
     // 2. GET Obtener Aula por ID de Path Variable -> URL Final: /api/v1/rooms/{id}

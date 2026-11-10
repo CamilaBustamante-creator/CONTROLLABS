@@ -15,26 +15,42 @@ public class RoomController implements RoomControllerApi {
     @Override
     public ResponseEntity<List<RoomResponse>> getAllRooms(String block) {
         RoomResponse sampleRoom = new RoomResponse(
-                1L, "SENA-301", "AMBIENTE 301", 31,
-                "FONTIBÓN", "DISPONIBLE", LocalDateTime.now()
+                1L,
+                "SENA-301",
+                "AMBIENTE 301",
+                31,
+                "FONTIBON",
+                "DISPONIBLE", LocalDateTime.now()
         );
-        return ResponseEntity.ok(List.of(sampleRoom));
+        RoomResponse sampleRoom1 = new RoomResponse(
+                2L,
+                "SENA-302",
+                "AMBIENTE 302",
+                31,
+                "FONTIBON",
+                "DISPONIBLE", LocalDateTime.now()
+        );
+        return ResponseEntity.ok(List.of(sampleRoom, sampleRoom1));
     }
 
     @Override
     public ResponseEntity<RoomResponse> getRoomById(Long id) {
-        RoomResponse room = new RoomResponse(
-                id, "LAB-" + id, "Laboratorio Computación " + id, 25,
-                "Bloque B", "DISPONIBLE", LocalDateTime.now()
+        RoomResponse sampleRoom = new RoomResponse(
+                1L,
+                "SENA-301",
+                "AMBIENTE 301",
+                31,
+                "FONTIBON",
+                "DISPONIBLE", LocalDateTime.now()
         );
-        return ResponseEntity.ok(room);
+        return ResponseEntity.ok(sampleRoom);
     }
 
     @Override
     public ResponseEntity<RoomResponse> createRoom(RoomCreateRequest request) {
         // En esta etapa el Controller construye el Response DTO con estado 201 CREATED
         RoomResponse createdRoom = new RoomResponse(
-                202L, request.code(), request.name(), request.totalPcs(),
+                3L, request.code(), request.name(), request.totalPcs(),
                 request.locationBlock(), "REGISTRADO", LocalDateTime.now()
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(createdRoom);
