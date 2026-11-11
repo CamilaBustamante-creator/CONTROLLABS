@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sena.controllabs.dto.IncidentCreateRequest;
 import com.sena.controllabs.dto.IncidentResponse;
-import com.sena.controllabs.dto.UserCreateRequest;
-import com.sena.controllabs.dto.UserResponse;
 
 import jakarta.validation.Valid;
 
@@ -26,14 +25,13 @@ public interface IncidentControllerApi {
     );
 
     @GetMapping("/{id}")
-    ResponseEntity<UserResponse> getUserById(@PathVariable Long id);
+    ResponseEntity<IncidentResponse> getIncidentById(@PathVariable Long id);
 
     @PostMapping
-    ResponseEntity<UserResponse> createUser(
-            @Valid @RequestBody UserCreateRequest request
+    ResponseEntity<IncidentResponse> createIncident(
+            @Valid @RequestBody IncidentCreateRequest request
     );
 
     @PatchMapping("/{id}")
-    ResponseEntity<UserResponse> updateUser(@RequestBody @PathVariable Long id );
-
+    ResponseEntity<IncidentResponse> updateIncident(@RequestBody @PathVariable Long id );
 }
